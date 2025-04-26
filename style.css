@@ -1,0 +1,222 @@
+@font-face {
+  font-family: "Basement Grotesque";
+  src: url("Fonts/BasementGrotesque-Black_v1.202.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+* {
+  font-family: "Basement Grotesque", sans-serif !important;
+}
+h1 {
+  font-weight: bold;
+}
+.Title {
+  font-size: 84px;
+  margin-bottom: -15px;
+}
+
+.Scroll {
+  height: 100vh;
+  overflow: scroll;
+}
+
+/*NAV*/
+.nav_H ul {
+  display: inline-flex;
+  list-style: none;
+}
+
+.nav_H ul li {
+  margin: 0px 30px;
+  font-weight: bold;
+}
+
+.nav_V ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: 150px; /*Increase value if list elements are more than it was*/
+}
+
+.nav_V ul li {
+  font-weight: bold;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+nav button {
+  border: none;
+  background: none;
+  transition: all 0.3s ease-in-out;
+}
+
+nav button:hover {
+  cursor: none !important;
+  margin-left: 10px;
+}
+
+.movingBoxH,
+.movingBoxV {
+  position: absolute;
+  color: white;
+}
+
+/*FACE*/
+.face {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+.face img {
+  width: 700px;
+}
+
+/*CURSOR*/
+html,
+body {
+  cursor: none;
+}
+
+.custom-cursor {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 0;
+}
+
+.site-wide {
+  width: 50px;
+  height: 50px;
+  border: 2px solid black;
+}
+
+.site-wide .pointer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  background-color: black;
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+}
+
+.site-wide.active .pointer {
+  width: 20px;
+  height: 20px;
+}
+
+/*Image border*/
+.works a {
+  --b: 0em; /* Kezdetben 0em a border szélesség */
+  --c: 1em; /* Corner size */
+  place-self: center;
+  position: relative;
+  margin: 1em auto;
+  padding: 10px;
+  display: inline-block; /* a szülő elem inline-block lesz, így a kép méretéhez igazodik */
+  width: auto; /* biztosítja, hogy a szélesség a tartalomhoz igazodjon */
+  height: auto; /* a magasság a tartalomhoz igazodik */
+  border: solid var(--b) transparent; /* áttetsző border a kép körül */
+  transition: all 0.3s ease-in-out; /* Animáció hozzáadása a border szélességére */
+}
+
+.works a:hover {
+  --b: 0.1em; /* Hover esetén 0.1em a border szélesség */
+  --c: 3em; /* Hover esetén 0.1em a border szélesség */
+}
+
+.works a::before {
+  position: absolute;
+  z-index: -1;
+  inset: calc(-1 * var(--b));
+  border: inherit;
+  background: black; /* Fekete háttér */
+  --corner: conic-gradient(from -90deg at var(--c) var(--c), black 25%, #0000 0)
+    0 0 / calc(100% - var(--c)) calc(100% - var(--c)) border-box;
+  --inner: conic-gradient(black 0 0) padding-box;
+  mask: var(--corner) subtract, var(--inner);
+  content: "";
+}
+
+/*MUNKAIM IMAGE POP UP*/
+#OpenImage {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(68, 68, 68, 0.747);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#ReplaceImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#ReplaceImage img {
+  max-width: 90%;
+  max-height: 90vh; /* maximum a viewport 90%-a */
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#OpenImage button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: larger;
+  float: right;
+}
+
+/*VIDEOLIST*/
+#videoList {
+  height: 60vh;
+  overflow: scroll;
+}
+#videoList ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+#videoList ul li {
+  margin: 10px 0px;
+  transition: all 0.3s ease-in-out;
+}
+#videoList img {
+  width: 150px;
+  margin-right: 10px;
+}
+
+#videoList a {
+  text-decoration: none;
+  color: black;
+  transition: all 0.3s ease-in-out;
+}
+#videoList li:hover {
+  background-color: grey;
+}
+
+#videoList li:hover a {
+  color: white;
+  margin-left: 20px;
+}
