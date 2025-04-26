@@ -104,25 +104,3 @@ for (const year in imageGroups) {
     worksOutput.appendChild(div);
   });
 }
-
-/*IMAGE REPLACE (FULLSCREEN)*/
-document.addEventListener("DOMContentLoaded", function () {
-  document.addEventListener("click", function (e) {
-    // Ha az elemre vagy a szülő <a>-ra kattintottak
-    const thumbnailLink = e.target.closest(".thumbnail-link");
-
-    if (thumbnailLink && thumbnailLink.querySelector("img")) {
-      e.preventDefault();
-
-      const img = thumbnailLink.querySelector("img");
-      const imgSrc = img.src;
-
-      // Lecseréljük a ReplaceImage tartalmát
-      const replaceDiv = document.getElementById("ReplaceImage");
-      replaceDiv.innerHTML = `<img src="${imgSrc}" alt="Nagyított kép" class="img-fluid" />`;
-
-      // Megjelenítjük az OpenImage részt
-      document.getElementById("OpenImage").style.display = "block";
-    }
-  });
-});

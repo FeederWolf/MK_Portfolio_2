@@ -83,3 +83,27 @@ function updateCursor() {
     lastMouseY - h / 2 + window.scrollY
   }px)`;
 }
+
+function updateFaceOpacity() {
+  const faces = document.querySelectorAll(".face");
+  const screenWidth = window.innerWidth;
+
+  let opacity = 1; // alapból teljesen látható
+
+  if (screenWidth <= 425) {
+    opacity = 0; // ha nagyon kicsi, eltűnik
+  } else if (screenWidth < 1920) {
+    // Átlósan csökkentjük: lineáris interpoláció
+    opacity = (screenWidth - 425) / (1920 - 425);
+  }
+
+  // Alkalmazzuk az összes .face elemre
+  faces.forEach((face) => {
+    face.style.opacity = opacity;
+  });
+}
+
+// Frissítsük oldal betöltéskor is
+window.addEventListener("load", updateFaceOpacity);
+// Frissítsük méretváltozáskor is
+window.addEventListener("resize", updateFaceOpacity);
